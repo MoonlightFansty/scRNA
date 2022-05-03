@@ -104,3 +104,73 @@ ls -lh
 ## 可以压缩
 ls SRR*fastq | while read id; do gzip $id; done
 ```
+**(3)CellRanger count流程** \
+对10X的fq文件运行CellRanger的counts流程，先做一个测试：
+首先需要对fastq.gz文件改名字，SampleName_S1_L001_R1_001.fastq.gz
+```
+mv SRR7722937_1.fastq.gz SRR7722937_S1_L001_I1_001.fastq.gz
+mv SRR7722937_2.fastq.gz SRR7722937_S1_L001_R1_001.fastq.gz
+mv SRR7722937_3.fastq.gz SRR7722937_S1_L001_R2_001.fastq.gz
+```
+![]()
+```
+# 运行cellranger
+cd cellranger
+
+ref=/home/data/vip10t17/software_install/10x_refernce/refdata-gex-GRCh38-2020-A
+id=SRR7722937
+cellranger count --id=$id \
+--transcriptome=$ref \
+--fastqs=/home/data/vip10t17/GEO_data/10x_test/fastq \
+--sample=$id \
+--nosecondary \
+--localmem=30
+```
+**可以使用shell脚本批量完成**
+```
+## 第一步 批量修改fastq文件名
+cd fastq
+
+cat ../1.sar/download_file | while read i ;do (mv ${i}_1*.gz 
+${i}_S1_L001_I1_001.fastq.gz;mv ${i}_2*.gz ${i}_S1_L001_R1_001.fastq.gz;mv 
+${i}_3*.gz ${i}_S1_L001_R2_001.fastq.gz);done
+```
+```
+## 第二步 批量运行cellranger
+ref=/home/data/vip10t17/software_install/10x_refernce/refdata-gex-GRCh38-2020-A
+ls *.fastq.gz | cut -d "_" -f 1 | uniq | while read id;
+do
+nohup cellranger count --id=$id \
+--transcriptome=$ref \
+--fastqs=/home/data/vip10t17/GEO_data/10x_test/fastq \
+--sample=$id \
+--nosecondary \
+--localcores=10 \ #设置核心数
+--localmem=30 &
+done
+```
+```
+## 第三步 可以压缩文件
+tar -zcvf Output.tar.gz SRR7722937 SRR7722938 SRR7722939 SRR7722940 SRR7722941 SRR7722942
+```
+**最主要的几个参数：**
+
+* --id 指定输出文件夹的名字
+
+* --transcriptome 指定参考基因组的路径
+
+* --sample 指定需要处理的fastq文件的前缀
+
+* --expect-cell 指定预期的细胞数目，默认参数是3000个
+
+* --localcores 指定计算的核心数
+
+* --mempercore 指定内存大小 GB
+
+* --nosecondary 不需要进行降维聚类（因为后期会用R可视化）
+
+* --chemistry，默认是自动识别chemistry，但是有些时候识别不出chemistry的时候，需要加入参数特别标明
+
+使用cellranger count --help可查看更多参数
+
+### 三、单细胞BAM文件上游分析
