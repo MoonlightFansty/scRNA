@@ -70,7 +70,7 @@ SRR7722941
 SRR7722942
 
 # 批量下载
-cat download_file |while read id;do (prefetch $id &);done  # 后台下载
+cat download_file | while read id;do (prefetch $id &);done  # 后台下载
 ```
 **(2)SRA转fastq** \
 常规的SRA转fastq文件，用的是fastq-dump软件，速度非常慢，4-5个小时才能处理完一个样本 \
