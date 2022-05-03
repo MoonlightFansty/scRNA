@@ -46,4 +46,4 @@ ln -s /home/~/scRNA/cellranger-6.1.2/cellranger /home/~/miniconda3/envs/scRNA/bi
 
 cellranger
 ```
-!(README-Figures/scRNA-CellRanger.png)
+!(https://github.com/MoonlightFansty/scRNA/blob/663536157c9ddc6f6d41657aaed47c681280a81a/README-Figures/scRNA-CellRanger.png)
