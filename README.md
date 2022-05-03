@@ -51,7 +51,7 @@ cellranger
 ### 二、单细胞SRR文件上游分析
 创建分析环境的文件夹：
 ```
-mkdir sra raw_fastq cellranger
+mkdir sra fastq cellranger
 ```
 **(1)数据下载** \
 示例数据GSE \
