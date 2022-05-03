@@ -1,2 +1,2 @@
-# single-cell RNA-seq
+# scRNA
 
