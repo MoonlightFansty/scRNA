@@ -46,8 +46,15 @@ ln -s /home/~/scRNA/cellranger-6.1.2/cellranger /home/~/miniconda3/envs/scRNA/bi
 
 cellranger
 ```
-![](https://github.com/MoonlightFansty/scRNA/blob/main/README-Figures/scRNA-CellRanger.png?raw=true)
+![CellRanger](https://github.com/MoonlightFansty/scRNA/blob/main/README-Figures/scRNA-CellRanger.png?raw=true)
+
 ### 二、单细胞SRR文件上游分析
-创建分析所用的文件夹备用：
+创建分析环境的文件夹：
 ```
+mkdir sra raw_fastq cellranger
 ```
+**(1)数据下载** \
+示例数据GSE \
+Metadata是表型数据，Accession List提供了SRA ID
+![]()
+
