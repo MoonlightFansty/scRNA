@@ -8,9 +8,9 @@
 ### 一、构建10x上游分析环境
 **(1)conda创建分析环境及软件安装**
 ```
-1. conda create -n scRNA python=3.8
-2. conda activate scRNA
-3. mamba install -y -c bioconda aspera-cli bwa samtools bedtools sambamba sra-tools bowtie2 samblaster fasterq-dump
+conda create -n scRNA python=3.8
+conda activate scRNA
+mamba install -y -c bioconda aspera-cli bwa samtools bedtools sambamba sra-tools bowtie2 samblaster fasterq-dump
 ```
 **(2)CellRanger及参考基因组下载** \
 2022年的最新版本是cellranger软件6.2.1，hg38和mm10参考基因组 \
@@ -42,7 +42,7 @@ tar -xzvf refdata-gex-GRCh38-2020-A.tar.gz
 ```
 ```
 ## 1.4 配置环境变量：PATH的路径设置对应的绝对路径
-ln -s /home/liuhonghao/scRNA/cellranger-6.1.2/cellranger /home/liuhonghao/miniconda3/envs/scRNA/bin
+ln -s /home/~/scRNA/cellranger-6.1.2/cellranger /home/~/miniconda3/envs/scRNA/bin
 
 cellranger
 ```
