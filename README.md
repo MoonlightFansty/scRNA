@@ -46,3 +46,4 @@ ln -s /home/~/scRNA/cellranger-6.1.2/cellranger /home/~/miniconda3/envs/scRNA/bi
 
 cellranger
 ```
+!(README-Figures/scRNA-CellRanger.png)
