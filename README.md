@@ -1,2 +1,2 @@
-# scRNA
-## 数据预处理
+# single-cell RNA-seq
+
