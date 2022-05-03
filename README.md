@@ -76,23 +76,23 @@ cat download_file |while read id;do (prefetch $id &);done  # 后台下载
 常规的SRA转fastq文件，用的是fastq-dump软件，速度非常慢，4-5个小时才能处理完一个样本 \
 这里用新办法fasterq-dump，2分钟完成一个样本
 ```
-cd 2.raw_fastq
-ln -s ../1.sra/SRR* ./
+cd fastq
+ln -s ../sra/SRR* ./
 
-### 方法1：多个文件批量做
+## 方法1：多个文件批量做
 cat >fastq.sh
 ls SRR* | while read id;do ( nohup fasterq-dump -O ./ --split-files -e 6 ./$id  --include-technical & );done
-## 运行脚本
+# 运行脚本
 bash fastq.sh
 ```
 ```
-### 方法2：for循环一个一个做
+## 方法2：for循环一个一个做
 for i in `ls SRR*`
 do
 i=$i
 echo "fasterq-dump -O ./ --split-files -e 40 ./$i --include-technical"
 done >fastq.sh
-## 运行脚本
+# 运行脚本
 bash fastq.sh
 ```
 ```
