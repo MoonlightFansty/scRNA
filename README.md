@@ -46,4 +46,8 @@ ln -s /home/~/scRNA/cellranger-6.1.2/cellranger /home/~/miniconda3/envs/scRNA/bi
 
 cellranger
 ```
-![CellRanger](https://github.com/MoonlightFansty/scRNA/blob/main/README-Figures/scRNA-CellRanger.png?raw=true)
+![](https://github.com/MoonlightFansty/scRNA/blob/main/README-Figures/scRNA-CellRanger.png?raw=true)
+### 二、单细胞SRR文件上游分析
+创建分析所用的文件夹备用：
+```
+```
