@@ -54,14 +54,14 @@ cellranger
 mkdir sra fastq cellranger
 ```
 **(1)数据下载** \
-示例数据GSE \
+示例数据GSE117988:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117988 \
 Metadata是表型数据，Accession List提供了SRA ID
 ![]()
 ```
-cd sra
+cd sra/GSE117988
 
 ## 写入需要下载的文件名
-cat >download_file
+cat >GSE117988
 SRR7722937
 SRR7722938
 SRR7722939
@@ -70,7 +70,7 @@ SRR7722941
 SRR7722942
 
 # 批量下载
-cat download_file | while read id;do (prefetch $id &);done  # 后台下载
+cat GSE117988 | while read id;do (nohup prefetch $id &);done  # 后台下载
 ```
 **(2)SRA转fastq** \
 常规的SRA转fastq文件，用的是fastq-dump软件，速度非常慢，4-5个小时才能处理完一个样本 \
