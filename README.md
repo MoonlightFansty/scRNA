@@ -68,6 +68,7 @@ SRR7722939
 SRR7722940
 SRR7722941
 SRR7722942
+# ctrl+D 结束文件
 
 # 批量下载
 cat GSE117988 | while read id;do (nohup prefetch $id &);done  # 后台下载
@@ -76,8 +77,8 @@ cat GSE117988 | while read id;do (nohup prefetch $id &);done  # 后台下载
 常规的SRA转fastq文件，用的是fastq-dump软件，速度非常慢，4-5个小时才能处理完一个样本 \
 这里用新办法fasterq-dump，2分钟完成一个样本
 ```
-cd fastq
-ln -s ../sra/SRR* ./
+cd fastq/GSE117988
+ln -s ../sra/GSE117988/SRR* ./
 
 ## 方法1：多个文件批量做
 cat >fastq.sh
@@ -117,11 +118,11 @@ mv SRR7722937_3.fastq.gz SRR7722937_S1_L001_R2_001.fastq.gz
 # 运行cellranger
 cd cellranger
 
-ref=/home/data/vip10t17/software_install/10x_refernce/refdata-gex-GRCh38-2020-A
+ref=/home/liuhonghao/scRNA/refdata-gex-GRCh38-2020-A
 id=SRR7722937
 cellranger count --id=$id \
 --transcriptome=$ref \
---fastqs=/home/data/vip10t17/GEO_data/10x_test/fastq \
+--fastqs=/home/liuhonghao/scRNA/fastq \
 --sample=$id \
 --nosecondary \
 --localmem=30
@@ -129,20 +130,20 @@ cellranger count --id=$id \
 **可以使用shell脚本批量完成**
 ```
 ## 第一步 批量修改fastq文件名
-cd fastq
+cd fastq/GSE117988
 
-cat ../1.sar/download_file | while read i ;do (mv ${i}_1*.gz 
+cat ../sra/GSE117988 | while read i ;do (mv ${i}_1*.gz 
 ${i}_S1_L001_I1_001.fastq.gz;mv ${i}_2*.gz ${i}_S1_L001_R1_001.fastq.gz;mv 
 ${i}_3*.gz ${i}_S1_L001_R2_001.fastq.gz);done
 ```
 ```
 ## 第二步 批量运行cellranger
-ref=/home/data/vip10t17/software_install/10x_refernce/refdata-gex-GRCh38-2020-A
+ref=/home/liuhonghao/scRNA/10x_refernce/refdata-gex-GRCh38-2020-A
 ls *.fastq.gz | cut -d "_" -f 1 | uniq | while read id;
 do
 nohup cellranger count --id=$id \
 --transcriptome=$ref \
---fastqs=/home/data/vip10t17/GEO_data/10x_test/fastq \
+--fastqs=/home/liuhonghao/scRNA/fastq \
 --sample=$id \
 --nosecondary \
 --localcores=10 \ #设置核心数
