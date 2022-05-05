@@ -179,9 +179,9 @@ tar -zcvf Output.tar.gz SRR7722937 SRR7722938 SRR7722939 SRR7722940 SRR7722941 S
 使用cellranger count --help可查看更多参数
 
 ### 三、单细胞BAM文件上游分析
-**bam转fastq，再走cellranger的流程非常耗费计算机资源和时间**
-**(1)下载bam数据：**
-示例数据来自：https://www.ebi.ac.uk/ena/browser/view/PRJNA727404?show=reads
+**bam转fastq，再走cellranger的流程非常耗费计算机资源和时间** \
+**(1)下载bam数据：** \
+示例数据来自：https://www.ebi.ac.uk/ena/browser/view/PRJNA727404?show=reads \
 ![]()
 ```
 cd ~/Projects_gao/newhbvhc
