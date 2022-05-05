@@ -62,7 +62,7 @@ mkdir sra fastq cellranger
 Metadata是表型数据，Accession List提供了SRA ID \
 ![GSE17988](README-Figures/GSE11798-SRA.png)
 ```
-cd GEO/GSE119788
+cd GEO/GSE119788/sra
 
 # Accession List
 cat >GSE117988
@@ -79,22 +79,21 @@ cat GSE117988 | while read id; do (nohup prefetch $id &); done
 cat GSE117988 | while read id; do(mv $id/*.sra ./); done
 cat GSE117988 | while read id; do(rm -rf $id); done
 ```
-```
-mv nohup.out sra
-```
 **(2)SRA转fastq** \
 常规的SRA转fastq文件，用的是fastq-dump软件，速度非常慢，4-5个小时才能处理完一个样本 \
 这里用新办法fasterq-dump，2分钟完成一个样本
 ```
+cd ../fastq
+
 # 方法1：while循环
 cat >fastq.sh
-ls SRR* | while read id; do (nohup fasterq-dump -O ./ --split-files -e 40 ./$id  --include-technical &); done
+ls ../sra/SRR* | while read id; do (nohup fasterq-dump -O ./ --split-files -e 40 ./$id  --include-technical &); done
 
 bash fastq.sh
 ```
 ```
 # 方法2：for循环
-for i in `ls SRR*`
+for i in `ls ../sra/SRR*`
 do
 i=$i
 echo "nohup fasterq-dump -O ./ --split-files -e 40 ./$i --include-technical &"
@@ -110,9 +109,6 @@ ls -lh
 ```
 # 压缩文件
 ls SRR*fastq | while read id; do (nohup gzip $id &); done
-```
-```
-mv *.sra sra
 ```
 **(3)CellRanger count流程** \
 对10X的fq文件运行CellRanger的counts流程，先做一个测试： \
