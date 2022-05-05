@@ -55,6 +55,7 @@ cellranger
 创建分析环境的文件夹：
 ```
 mkdir GEO/GSE119788
+mkdir sra fastq cellranger
 ```
 **(1)数据下载** \
 示例数据GSE117988:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117988 \
@@ -77,6 +78,9 @@ SRR7722942
 cat GSE117988 | while read id; do (nohup prefetch $id &); done
 cat GSE117988 | while read id; do(mv $id/*.sra ./); done
 cat GSE117988 | while read id; do(rm -rf $id); done
+```
+```
+mv nohup.out GSE117988 -t sra
 ```
 **(2)SRA转fastq** \
 常规的SRA转fastq文件，用的是fastq-dump软件，速度非常慢，4-5个小时才能处理完一个样本 \
@@ -106,6 +110,10 @@ ls -lh
 ```
 # 压缩文件
 ls SRR*fastq | while read id; do (nohup gzip $id &); done
+```
+```
+mv *.sra sra
+mv nohup.out fastq.sh 
 ```
 **(3)CellRanger count流程** \
 对10X的fq文件运行CellRanger的counts流程，先做一个测试：
