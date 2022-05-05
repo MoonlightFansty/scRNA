@@ -60,7 +60,7 @@ mkdir sra fastq cellranger
 **(1)数据下载** \
 示例数据GSE117988:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117988 \
 Metadata是表型数据，Accession List提供了SRA ID \
-![GSE17988](README-Figures/GSE11798-SRA.png)
+![GSE17988](README-Figures/GSE117988-SRA.png)
 ```
 cd GEO/GSE119788/sra
 
@@ -105,6 +105,7 @@ bash fastq.sh
 # 查看文件
 ls -lh
 ```
+![Fastq]()
 ```
 # 压缩文件
 ls SRR*fastq | while read id; do (nohup gzip $id &); done
@@ -291,9 +292,9 @@ nohup bash other_file.sh>log_106.114.119.log 2>&1 &
 
 ### 四、Cellranger 结果
 **一个样本产生的结果：** \
-![]()
+![Results]()
 **最重要的结果在```outs/```文件夹下：** \
-![]()
+![outs]()
 **结果解读：**
 
 * web_summary.html：必看，官方说明 summary HTML file ，包括许多QC指标，预估细胞数，比对率等
