@@ -191,7 +191,8 @@ tar -zcvf Output.tar.gz SRR7722937 SRR7722938 SRR7722939 SRR7722940 SRR7722941 S
 ![]()
 ```
 cd ~/Projects_gao/newhbvhc
-##3.1构建下载list
+
+# 3.1构建下载list
 cat >download_file
 /vol1/run/SRR144/SRR14424777/740_possorted_genome_bam.bam
 /vol1/run/SRR144/SRR14424778/725_possorted_genome_bam.bam
@@ -202,7 +203,7 @@ cat >download_file
 /vol1/run/SRR144/SRR14424783/104_possorted_genome_bam.bam
 /vol1/run/SRR144/SRR14424784/095_possorted_genome_bam.bam
 
-##3.2批量下载
+# 3.2批量下载
 nohup ascp -v -QT -l 300m -P33001 -k1 -i /home/data/ssy40/anaconda3/envs/10x/etc/asperaweb_id_dsa.openssh --mode recv --host fasp.sra.ebi.ac.uk --user era-fasp --file-list download_file ./ & >download.log
 ```
 ```
@@ -234,7 +235,7 @@ samtools view 104_possorted_genome_bam.bam | head -3 | tr "\t" "\n" | cat -n
 
 **cellranger bamtofastq:**
 ```
-## 3.3 构建name list文件
+# 3.3 构建name list文件
 cat >name.list
 740
 725
@@ -249,26 +250,27 @@ cat >name.list
 mkdir fastq_file
 ```
 ```
-##3.5准备shell脚本
+# 3.5准备shell脚本
 cat > bamtofastq.sh
 cat name.list |while read id
 do
 cellranger bamtofastq --nthreads 30 --traceback ${id}_possorted_genome_bam.bam ./fastq_file/${id}
 done
-#运行脚本
+
+# 运行脚本
 nohup bash bamtofastq.sh & 
 ```
 ```
-#必要时可批量kill任务
-#ps -ef | grep bamtofastq | awk '{print $2}' | while read id;do kill $id;done  #批量Kill
+# 必要时可批量kill任务
+# ps -ef | grep bamtofastq | awk '{print $2}' | while read id;do kill $id;done  #批量Kill
 ```
 **(3)cellranger count \
 批量完成：**
 ```
-### 看一下文件夹地址
+# 看一下文件夹地址
 find ~/Projects_gao/newhbvhc/fastq_file/*/*count*/ | grep [1-1000] | grep -v XX/bam 
 
-##3.7 输入剩余未完成的文件list
+# 3.7 输入剩余未完成的文件list
 cat >other_file.list
 /home/data/ssy40/Projects_gao/newhbvhc/fastq_file/095/
 /home/data/ssy40/Projects_gao/newhbvhc/fastq_file/104/
@@ -280,7 +282,7 @@ cat >other_file.list
 /home/data/ssy40/Projects_gao/newhbvhc/fastq_file/740/
 ```
 ```
-##3.8 批量shell代码
+# 3.8 批量shell代码
 cat other_file.list |while read id
 do
 ref=/home/data/ssy40/cellrange_soft/10x_refernce/refdata-gex-GRCh38-2020-A
@@ -294,14 +296,14 @@ echo "cellranger count --id=$sample_name \
 --localcores=30"
 done>other_file.sh
 
-#运行
+# 运行
 nohup bash other_file.sh>log_106.114.119.log 2>&1 &
 ```
 
 ### 四、Cellranger 结果
-**一个样本产生的结果：**
+**一个样本产生的结果：** \
 ![]()
-**最重要的结果在```outs/```文件夹下：**
+**最重要的结果在```outs/```文件夹下：** \
 ![]()
 **结果解读：**
 
