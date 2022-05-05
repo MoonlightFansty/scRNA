@@ -212,8 +212,8 @@ ls -lh | cut -d" " -f 5-
  53G 12月 11  2021 740_possorted_genome_bam.bam
 449K 12月 10 13:45 wget-log
 ```
-**(2)bam转fastq**
-参考官网流程：https://support.10xgenomics.com/docs/bamtofastq?src=pr&lss=none&cnm=&cid=NULL
+**(2)bam转fastq** \
+参考官网流程：https://support.10xgenomics.com/docs/bamtofastq?src=pr&lss=none&cnm=&cid=NULL \
 
 cellranger产生的bam文件里是带有barcode与UMI的，储存在tag标签里：
 ```
