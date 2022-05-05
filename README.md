@@ -17,7 +17,7 @@ mamba install -y -c bioconda aspera-cli bwa samtools bedtools sambamba sra-tools
 这里`cellranger`的下载链接会失效，需要去官网获取：https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest
 >如果下载失败或下载速度过慢，可以在windows环境下载，在上传至服务器
 ```
-## 1.1 cellranger软件 6.2.1
+## cellranger软件 6.2.1
 wget -O cellranger-6.1.2.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-6.1.2.tar.gz?Expires=1651612516&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci02LjEuMi50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NTE2MTI1MTZ9fX1dfQ__&Signature=mveKaux6HIjgV5uTm~0D7stn-fy-akGwbRr3ENUe24VM6WMy5JAZ7uoBAREuoG9XpQu4aUsFrGpXZ07o9Q5NvWzRGItyE2j2LGKwNZ-Lw9shhrJufpqg0QqGqftDvXmvSma2vu7hSGt43YIDfW-Yq6qK3G4u-f~XmpKfU77dkFiSEDpmHLKRTkZNF4xCffKvAV7WcKoaAhrd2z0hgB4SPLgcOfs1yu-7u84NsD7Epgb8NUlTdHgQIH1huHw5RMgUdZ6eoWhMMlMN0RDbizYWnEm1OU31uxheiGAxz0~~QxbP4rgkeD~1yQ0kqCLsqMagYwuUryR8~ptG1pXmNt1log__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA"
 
 md5sum cellranger-6.1.2.tar.gz
@@ -25,7 +25,7 @@ md5sum cellranger-6.1.2.tar.gz
 tar -xzvf cellranger-6.1.2.tar.gz
 ```
 ```
-## 1.2 Mouse reference dataset required for Cell Ranger 小鼠参考基因组
+## Mouse reference dataset required for Cell Ranger 小鼠参考基因组
 wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
 
 md5sum refdata-gex-mm10-2020-A.tar.gz
@@ -33,7 +33,7 @@ md5sum refdata-gex-mm10-2020-A.tar.gz
 tar -xzvf refdata-gex-mm10-2020-A.tar.gz
 ```
 ```
-## 1.3 Human reference (GRCh38) dataset required for Cell Ranger 人类参考基因组
+## Human reference (GRCh38) dataset required for Cell Ranger 人类参考基因组
 wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
 
 md5sum refdata-gex-GRCh38-2020-A.tar.gz
@@ -41,7 +41,7 @@ md5sum refdata-gex-GRCh38-2020-A.tar.gz
 tar -xzvf refdata-gex-GRCh38-2020-A.tar.gz
 ```
 ```
-## 1.4 配置环境变量：PATH的路径设置对应的绝对路径
+## 配置环境变量：PATH的路径设置对应的绝对路径
 ln -s /home/~/scRNA/cellranger-6.1.2/cellranger /home/~/miniconda3/envs/scRNA/bin
 
 cellranger
@@ -51,7 +51,7 @@ cellranger
 ### 二、单细胞SRR文件上游分析
 创建分析环境的文件夹：
 ```
-mkdir sra fastq cellranger
+mkdir 
 ```
 **(1)数据下载** \
 示例数据GSE117988:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117988 \
