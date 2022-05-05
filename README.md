@@ -105,7 +105,6 @@ bash fastq.sh
 # 查看文件
 ls -lh
 ```
-![]()
 ```
 # 压缩文件
 ls SRR*fastq | while read id; do (nohup gzip $id &); done
@@ -118,7 +117,6 @@ mv SRR7722937_1.fastq.gz SRR7722937_S1_L001_I1_001.fastq.gz
 mv SRR7722937_2.fastq.gz SRR7722937_S1_L001_R1_001.fastq.gz
 mv SRR7722937_3.fastq.gz SRR7722937_S1_L001_R2_001.fastq.gz
 ```
-![]()
 ```
 cd ../cellranger
 
@@ -181,12 +179,11 @@ tar -zcvf Output.tar.gz SRR7722937 SRR7722938 SRR7722939 SRR7722940 SRR7722941 S
 ### 三、单细胞BAM文件上游分析
 **bam转fastq，再走cellranger的流程非常耗费计算机资源和时间** \
 **(1)下载bam数据：** \
-示例数据来自：https://www.ebi.ac.uk/ena/browser/view/PRJNA727404?show=reads \
-![]()
+示例数据来自：https://www.ebi.ac.uk/ena/browser/view/PRJNA727404?show=reads
 ```
 cd ~/Projects_gao/newhbvhc
 
-# 3.1构建下载list
+# 构建下载list
 cat >download_file
 /vol1/run/SRR144/SRR14424777/740_possorted_genome_bam.bam
 /vol1/run/SRR144/SRR14424778/725_possorted_genome_bam.bam
@@ -197,7 +194,7 @@ cat >download_file
 /vol1/run/SRR144/SRR14424783/104_possorted_genome_bam.bam
 /vol1/run/SRR144/SRR14424784/095_possorted_genome_bam.bam
 
-# 3.2批量下载
+# 批量下载
 nohup ascp -v -QT -l 300m -P33001 -k1 -i /home/data/ssy40/anaconda3/envs/10x/etc/asperaweb_id_dsa.openssh --mode recv --host fasp.sra.ebi.ac.uk --user era-fasp --file-list download_file ./ & >download.log
 ```
 ```
@@ -214,13 +211,11 @@ ls -lh | cut -d" " -f 5-
 ```
 **(2)bam转fastq** \
 参考官网流程：https://support.10xgenomics.com/docs/bamtofastq?src=pr&lss=none&cnm=&cid=NULL \
-
 cellranger产生的bam文件里是带有barcode与UMI的，储存在tag标签里：
 ```
 samtools view 104_possorted_genome_bam.bam | less -SN
 samtools view 104_possorted_genome_bam.bam | head -3 | tr "\t" "\n" | cat -n
 ```
-![]()
 * CB、CR、CY表示barcode，一般是16个碱基
 
 * UB、UR、UY表示UMI，一般是10个碱基
@@ -244,7 +239,7 @@ cat >name.list
 mkdir fastq_file
 ```
 ```
-# 3.5准备shell脚本
+# 准备shell脚本
 cat > bamtofastq.sh
 cat name.list |while read id
 do
@@ -264,7 +259,7 @@ nohup bash bamtofastq.sh &
 # 看一下文件夹地址
 find ~/Projects_gao/newhbvhc/fastq_file/*/*count*/ | grep [1-1000] | grep -v XX/bam 
 
-# 3.7 输入剩余未完成的文件list
+# 输入剩余未完成的文件list
 cat >other_file.list
 /home/data/ssy40/Projects_gao/newhbvhc/fastq_file/095/
 /home/data/ssy40/Projects_gao/newhbvhc/fastq_file/104/
@@ -276,7 +271,7 @@ cat >other_file.list
 /home/data/ssy40/Projects_gao/newhbvhc/fastq_file/740/
 ```
 ```
-# 3.8 批量shell代码
+# 批量shell代码
 cat other_file.list |while read id
 do
 ref=/home/data/ssy40/cellrange_soft/10x_refernce/refdata-gex-GRCh38-2020-A
