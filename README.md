@@ -63,7 +63,7 @@ Metadata是表型数据，Accession List提供了SRA ID
 ```
 cd GEO/GSE119788
 
-# 写入需要下载的文件名
+# Accession List
 cat >GSE117988
 SRR7722937
 SRR7722938
@@ -73,7 +73,7 @@ SRR7722941
 SRR7722942
 # ctrl+D 结束文件
 
-# 批量下载
+# 下载SRA
 cat GSE117988 | while read id; do (nohup prefetch $id &); done
 cat GSE117988 | while read id; do(mv $id/*.sra ./); done
 cat GSE117988 | while read id; do(rm -rf $id); done
@@ -82,7 +82,7 @@ cat GSE117988 | while read id; do(rm -rf $id); done
 常规的SRA转fastq文件，用的是fastq-dump软件，速度非常慢，4-5个小时才能处理完一个样本 \
 这里用新办法fasterq-dump，2分钟完成一个样本
 ```
-# 方法1：多个文件批量做
+# 方法1：while循环
 cat >fastq.sh
 ls SRR* | while read id; do (nohup fasterq-dump -O ./ --split-files -e 6 ./$id  --include-technical &); done
 
@@ -101,12 +101,12 @@ done >fastq.sh
 bash fastq.sh
 ```
 ```
-# 大概耗时2分钟完成
+# 查看文件
 ls -lh
 ```
 ![]()
 ```
-# 可以压缩
+# 压缩文件
 ls SRR*fastq | while read id; do gzip $id; done
 ```
 **(3)CellRanger count流程** \
