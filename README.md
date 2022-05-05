@@ -149,9 +149,9 @@ nohup cellranger count --id=$id \
 --fastqs=/home/~/scRNA/GEO/GSE117988/fastq \
 --sample=$id \
 --nosecondary \
---localcores=10 \ #设置核心数
+# --localcores=10 \ #设置核心数
 --localmem=30 &
-; done
+done
 ```
 ```
 # 第三步 可以压缩文件
