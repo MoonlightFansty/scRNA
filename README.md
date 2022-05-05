@@ -80,7 +80,7 @@ cat GSE117988 | while read id; do(mv $id/*.sra ./); done
 cat GSE117988 | while read id; do(rm -rf $id); done
 ```
 ```
-mv nohup.out GSE117988 -t sra
+mv nohup.out sra
 ```
 **(2)SRA转fastq** \
 常规的SRA转fastq文件，用的是fastq-dump软件，速度非常慢，4-5个小时才能处理完一个样本 \
@@ -142,6 +142,7 @@ ${i}_S1_L001_I1_001.fastq.gz;mv ${i}_2*.gz ${i}_S1_L001_R1_001.fastq.gz;mv
 ${i}_3*.gz ${i}_S1_L001_R2_001.fastq.gz &); done
 ```
 ```
+mv GSE117988 sra
 mv nohup.out fastq.sh *.fastq.gz -t fastq
 ```
 ```
