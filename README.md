@@ -142,7 +142,7 @@ cd ../cellranger
 
 # 第二步 批量运行cellranger
 ref=/home/~/scRNA/refdata-gex-GRCh38-2020-A
-ls /home/~/scRNA/GEO/GSE117988/fastq/*.fastq.gz | cut -d "_" -f 1 | uniq | while read id;
+cat ../sra/GSE117988 | while read id;
 do
 nohup cellranger count --id=$id \
 --transcriptome=$ref \
