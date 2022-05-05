@@ -133,14 +133,14 @@ cellranger count
 ```
 **可以使用shell脚本批量完成**
 ```
-cd ../cellranger
-
 # 第一步 批量修改fastq文件名
 cat ../sra/GSE117988 | while read i; do (nohup mv ${i}_1*.gz ${i}_S1_L001_I1_001.fastq.gz &); done
 cat ../sra/GSE117988 | while read i; do (nohup mv ${i}_2*.gz ${i}_S1_L001_R1_001.fastq.gz &); done
 cat ../sra/GSE117988 | while read i; do (nohup mv ${i}_3*.gz ${i}_S1_L001_R2_001.fastq.gz &); done
 ```
 ```
+cd ../cellranger
+
 # 第二步 批量运行cellranger
 ref=/home/~/scRNA/refdata-gex-GRCh38-2020-A
 ls /home/~/scRNA/GEO/GSE117988/fastq/*.fastq.gz | cut -d "_" -f 1 | uniq | while read id;
@@ -152,7 +152,7 @@ nohup cellranger count --id=$id \
 --nosecondary \
 --localcores=10 \ #设置核心数
 --localmem=30 &
-done
+; done
 ```
 ```
 # 第三步 可以压缩文件
