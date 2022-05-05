@@ -60,7 +60,7 @@ mkdir sra fastq cellranger
 **(1)数据下载** \
 示例数据GSE117988:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117988 \
 Metadata是表型数据，Accession List提供了SRA ID
-![]()
+![GSE17988](README-Figures/GSE11798-SRA.png)
 ```
 cd GEO/GSE119788
 
