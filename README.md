@@ -74,7 +74,7 @@ SRR7722941
 SRR7722942
 # ctrl+D 结束文件
 
-# 下载SRA
+# 下载 SRA
 cat GSE117988 | while read id; do (nohup prefetch $id &); done
 cat GSE117988 | while read id; do(mv $id/*.sra ./); done
 cat GSE117988 | while read id; do(rm -rf $id); done
@@ -85,14 +85,14 @@ cat GSE117988 | while read id; do(rm -rf $id); done
 ```
 cd ../fastq
 
-# 方法1：while循环
+# while 循环
 cat >fastq.sh
 ls ../sra/SRR* | while read id; do (nohup fasterq-dump -O ./ --split-files -e 40 $id  --include-technical &); done
 
 bash fastq.sh
 ```
 ```
-# 方法2：for循环
+# for 循环
 for i in `ls ../sra/SRR*`
 do
 i=$i
