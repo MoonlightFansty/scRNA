@@ -127,11 +127,12 @@ mv SRR7722937_3.fastq.gz SRR7722937_S1_L001_R2_001.fastq.gz
 cd cellranger
 
 # 运行cellranger
-cellranger count --id=SRR7722937 \
---transcriptome=/home/~/scRNA/refdata-gex-GRCh38-2020-A \
---fastqs=/home/liuhonghao/scRNA/fastq \
---sample=SRR7722937 \
---nosecondary \
+cellranger count 
+--id=SRR7722937 
+--transcriptome=/home/~/scRNA/refdata-gex-GRCh38-2020-A 
+--fastqs=/home/~/scRNA/GEO/GSE117988/fastq 
+--sample=SRR7722937 
+--nosecondary 
 --localmem=30
 ```
 **可以使用shell脚本批量完成**
@@ -147,12 +148,12 @@ mv nohup.out fastq.sh *.fastq.gz -t fastq
 ```
 ```
 # 第二步 批量运行cellranger
-ref=/home/~/scRNA/10x_refernce/refdata-gex-GRCh38-2020-A
-ls *.fastq.gz | cut -d "_" -f 1 | uniq | while read id;
+ref=/home/~/scRNA/refdata-gex-GRCh38-2020-A
+ls /home/~/scRNA/GEO/GSE117988/fastq/*.fastq.gz | cut -d "_" -f 1 | uniq | while read id;
 do
 nohup cellranger count --id=$id \
 --transcriptome=$ref \
---fastqs=/home/liuhonghao/scRNA/fastq \
+--fastqs=/home/~/scRNA/GEO/GSE117988/fastq \
 --sample=$id \
 --nosecondary \
 --localcores=10 \ #设置核心数
