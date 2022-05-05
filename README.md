@@ -93,7 +93,7 @@ bash fastq.sh
 for i in `ls SRR*`
 do
 i=$i
-echo "fasterq-dump -O ./ --split-files -e 40 ./$i --include-technical"
+echo "nohup fasterq-dump -O ./ --split-files -e 40 ./$i --include-technical &"
 done >fastq.sh
 
 bash fastq.sh
@@ -105,7 +105,7 @@ ls -lh
 ![]()
 ```
 # 压缩文件
-ls SRR*fastq | while read id; do gzip $id; done
+ls SRR*fastq | while read id; do (nohup gzip $id &); done
 ```
 **(3)CellRanger count流程** \
 对10X的fq文件运行CellRanger的counts流程，先做一个测试：
