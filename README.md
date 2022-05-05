@@ -87,7 +87,7 @@ cd ../fastq
 
 # 方法1：while循环
 cat >fastq.sh
-ls ../sra/SRR* | while read id; do (nohup fasterq-dump -O ./ --split-files -e 40 ./$id  --include-technical &); done
+ls ../sra/SRR* | while read id; do (nohup fasterq-dump -O ./ --split-files -e 40 $id  --include-technical &); done
 
 bash fastq.sh
 ```
@@ -96,7 +96,7 @@ bash fastq.sh
 for i in `ls ../sra/SRR*`
 do
 i=$i
-echo "nohup fasterq-dump -O ./ --split-files -e 40 ./$i --include-technical &"
+echo "nohup fasterq-dump -O ./ --split-files -e 40 $i --include-technical &"
 done >fastq.sh
 
 bash fastq.sh
@@ -120,7 +120,7 @@ mv SRR7722937_3.fastq.gz SRR7722937_S1_L001_R2_001.fastq.gz
 ```
 ![]()
 ```
-cd cellranger
+cd ../cellranger
 
 # 运行cellranger
 cellranger count 
@@ -133,14 +133,12 @@ cellranger count
 ```
 **可以使用shell脚本批量完成**
 ```
+cd ../cellranger
+
 # 第一步 批量修改fastq文件名
-cat GSE117988 | while read i; do (nohup mv ${i}_1*.gz 
-${i}_S1_L001_I1_001.fastq.gz;mv ${i}_2*.gz ${i}_S1_L001_R1_001.fastq.gz;mv 
-${i}_3*.gz ${i}_S1_L001_R2_001.fastq.gz &); done
-```
-```
-mv GSE117988 sra
-mv nohup.out fastq.sh *.fastq.gz -t fastq
+cat ../sra/GSE117988 | while read i; do (nohup mv ${i}_1*.gz ${i}_S1_L001_I1_001.fastq.gz &); done
+cat ../sra/GSE117988 | while read i; do (nohup mv ${i}_2*.gz ${i}_S1_L001_R1_001.fastq.gz &); done
+cat ../sra/GSE117988 | while read i; do (nohup mv ${i}_3*.gz ${i}_S1_L001_R2_001.fastq.gz &); done
 ```
 ```
 # 第二步 批量运行cellranger
