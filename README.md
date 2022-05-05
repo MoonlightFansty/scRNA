@@ -84,7 +84,7 @@ cat GSE117988 | while read id; do(rm -rf $id); done
 ```
 # 方法1：while循环
 cat >fastq.sh
-ls SRR* | while read id; do (nohup fasterq-dump -O ./ --split-files -e 6 ./$id  --include-technical &); done
+ls SRR* | while read id; do (nohup fasterq-dump -O ./ --split-files -e 40 ./$id  --include-technical &); done
 
 bash fastq.sh
 ```
