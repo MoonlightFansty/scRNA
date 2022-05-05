@@ -292,9 +292,9 @@ nohup bash other_file.sh>log_106.114.119.log 2>&1 &
 
 ### 四、Cellranger 结果
 **一个样本产生的结果：** \
-![Results](README-Figures/Cellranger-results.png)
+![Results](README-Figures/Cellranger-results.png) \
 **最重要的结果在```outs/```文件夹下：** \
-![outs]()
+![outs]() \
 **结果解读：**
 
 * web_summary.html：必看，官方说明 summary HTML file ，包括许多QC指标，预估细胞数，比对率等
