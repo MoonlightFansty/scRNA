@@ -113,7 +113,6 @@ ls SRR*fastq | while read id; do (nohup gzip $id &); done
 ```
 ```
 mv *.sra sra
-mv nohup.out fastq.sh 
 ```
 **(3)CellRanger count流程** \
 对10X的fq文件运行CellRanger的counts流程，先做一个测试：
@@ -141,6 +140,9 @@ cellranger count --id=SRR7722937 \
 cat GSE117988 | while read i; do (nohup mv ${i}_1*.gz 
 ${i}_S1_L001_I1_001.fastq.gz;mv ${i}_2*.gz ${i}_S1_L001_R1_001.fastq.gz;mv 
 ${i}_3*.gz ${i}_S1_L001_R2_001.fastq.gz &); done
+```
+```
+mv nohup.out fastq.sh *.fastq.gz -t fastq
 ```
 ```
 # 第二步 批量运行cellranger
