@@ -292,7 +292,7 @@ nohup bash other_file.sh>log_106.114.119.log 2>&1 &
 
 ### 四、Cellranger 结果
 **一个样本产生的结果：** \
-![Results]()
+![Results](README-Figures/Cellranger-results.png)
 **最重要的结果在```outs/```文件夹下：** \
 ![outs]()
 **结果解读：**
