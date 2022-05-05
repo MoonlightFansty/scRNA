@@ -117,30 +117,26 @@ mv SRR7722937_3.fastq.gz SRR7722937_S1_L001_R2_001.fastq.gz
 ```
 ![]()
 ```
-# 运行cellranger
 cd cellranger
 
-ref=/home/liuhonghao/scRNA/refdata-gex-GRCh38-2020-A
-id=SRR7722937
-cellranger count --id=$id \
---transcriptome=$ref \
+# 运行cellranger
+cellranger count --id=SRR7722937 \
+--transcriptome=/home/~/scRNA/refdata-gex-GRCh38-2020-A \
 --fastqs=/home/liuhonghao/scRNA/fastq \
---sample=$id \
+--sample=SRR7722937 \
 --nosecondary \
 --localmem=30
 ```
 **可以使用shell脚本批量完成**
 ```
-## 第一步 批量修改fastq文件名
-cd fastq/GSE117988
-
-cat ../sra/GSE117988 | while read i ;do (mv ${i}_1*.gz 
+# 第一步 批量修改fastq文件名
+cat GSE117988 | while read i; do (nohup mv ${i}_1*.gz 
 ${i}_S1_L001_I1_001.fastq.gz;mv ${i}_2*.gz ${i}_S1_L001_R1_001.fastq.gz;mv 
-${i}_3*.gz ${i}_S1_L001_R2_001.fastq.gz);done
+${i}_3*.gz ${i}_S1_L001_R2_001.fastq.gz &); done
 ```
 ```
-## 第二步 批量运行cellranger
-ref=/home/liuhonghao/scRNA/10x_refernce/refdata-gex-GRCh38-2020-A
+# 第二步 批量运行cellranger
+ref=/home/~/scRNA/10x_refernce/refdata-gex-GRCh38-2020-A
 ls *.fastq.gz | cut -d "_" -f 1 | uniq | while read id;
 do
 nohup cellranger count --id=$id \
@@ -153,7 +149,7 @@ nohup cellranger count --id=$id \
 done
 ```
 ```
-## 第三步 可以压缩文件
+# 第三步 可以压缩文件
 tar -zcvf Output.tar.gz SRR7722937 SRR7722938 SRR7722939 SRR7722940 SRR7722941 SRR7722942
 ```
 **最主要的几个参数:**
