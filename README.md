@@ -115,7 +115,7 @@ ls SRR*fastq | while read id; do (nohup gzip $id &); done
 mv *.sra sra
 ```
 **(3)CellRanger count流程** \
-对10X的fq文件运行CellRanger的counts流程，先做一个测试：
+对10X的fq文件运行CellRanger的counts流程，先做一个测试： \
 首先需要对fastq.gz文件改名字，SampleName_S1_L001_R1_001.fastq.gz
 ```
 mv SRR7722937_1.fastq.gz SRR7722937_S1_L001_I1_001.fastq.gz
@@ -297,3 +297,32 @@ done>other_file.sh
 #运行
 nohup bash other_file.sh>log_106.114.119.log 2>&1 &
 ```
+
+### 四、Cellranger 结果
+**一个样本产生的结果：**
+![]()
+**最重要的结果在```outs/```文件夹下：**
+![]()
+**结果解读：**
+
+* web_summary.html：必看，官方说明 summary HTML file ，包括许多QC指标，预估细胞数，比对率等
+
+* metrics_summary.csv：CSV格式数据摘要，可以不看
+
+* possorted_genome_bam.bam：比对文件，用于可视化比对的reads和重新创建FASTQ文件，可以不看
+
+* possorted_genome_bam.bam.bai：索引文件
+
+* filtered_gene_bc_matrices：是重要的一个目录，下面又包含了 barcodes.tsv.gz、features.tsv.gz、matrix.mtx.gz，是下游Seurat、Scater、Monocle等分析的输入文件，是经过Cell Ranger过滤后构建矩阵所需要的所有文件
+
+* filtered_feature_bc_matrix.h5：过滤掉的barcode信息HDF5 format，可以不看
+
+* raw_feature_bc_matrix：原始barcode信息，未过滤的可以用于构建矩阵的文件，可以不看
+
+* raw_feature_bc_matrix.h5：原始barcode信息HDF5 format，可以不看
+
+* analysis：数据分析目录，下面又包含聚类clustering（有graph-based & k-means）、差异分析diffexp、主成分线性降维分析pca、非线性降维tsne，因为我们自己会走Seurat流程，所以不用看
+
+* molecule_info.h5：可用于整合多样本，使用cellranger aggr函数
+
+* cloupe.cloupe：官方可视化工具Loupe Cell Browser 输入文件，无代码分析的情况下使用，会代码的同学通常用不到
