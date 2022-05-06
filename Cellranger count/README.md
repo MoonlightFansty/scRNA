@@ -127,7 +127,7 @@ cellranger count
 ```
 **可以使用shell脚本批量完成**
 ```
-# 第一步 批量修改fastq文件名
+# 批量修改fastq文件名
 cat ../sra/GSE117988 | while read i; do (nohup mv ${i}_1*.gz ${i}_S1_L001_I1_001.fastq.gz &); done
 cat ../sra/GSE117988 | while read i; do (nohup mv ${i}_2*.gz ${i}_S1_L001_R1_001.fastq.gz &); done
 cat ../sra/GSE117988 | while read i; do (nohup mv ${i}_3*.gz ${i}_S1_L001_R2_001.fastq.gz &); done
@@ -135,7 +135,7 @@ cat ../sra/GSE117988 | while read i; do (nohup mv ${i}_3*.gz ${i}_S1_L001_R2_001
 ```
 cd ../cellranger
 
-# 第二步 批量运行cellranger
+# 批量运行cellranger
 ref=/home/~/scRNA/refdata-gex-GRCh38-2020-A
 cat ../sra/GSE117988 | while read id;
 do
@@ -149,7 +149,12 @@ nohup cellranger count --id=$id \
 done
 ```
 ```
-# 第三步 可以压缩文件
+mkdir cellranger
+cat ../sra/GSE117988 | while read id; do(mkdir ./cellranger/$id); done
+cat ../sra/GSE117988 | while read id; do(mv $id/outs/raw_feature_bc_matrix/* ./cellranger/$id); done
+```
+```
+cd cellranger
 tar -zcvf cellranger.tar.gz SRR7722937 SRR7722938 SRR7722939 SRR7722940 SRR7722941 SRR7722942
 ```
 **最主要的几个参数:**
