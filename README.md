@@ -54,7 +54,7 @@ cellranger
 ### 二、单细胞SRR文件上游分析
 创建分析环境的文件夹：
 ```
-mkdir GEO/GSE119788
+mkdir GEO/GSE117988
 mkdir sra fastq cellranger
 ```
 **(1)数据下载** \
@@ -305,7 +305,7 @@ nohup bash other_file.sh>log_106.114.119.log 2>&1 &
 
 * possorted_genome_bam.bam.bai：索引文件
 
-* filtered_gene_bc_matrices：是重要的一个目录，下面又包含了 barcodes.tsv.gz、features.tsv.gz、matrix.mtx.gz，是下游Seurat、Scater、Monocle等分析的输入文件，是经过Cell Ranger过滤后构建矩阵所需要的所有文件
+* ```filtered_gene_bc_matrices```：是重要的一个目录，下面又包含了```barcodes.tsv.gz、features.tsv.gz、matrix.mtx.gz```，是下游Seurat、Scater、Monocle等分析的输入文件，是经过Cell Ranger过滤后构建矩阵所需要的所有文件
 
 * filtered_feature_bc_matrix.h5：过滤掉的barcode信息HDF5 format，可以不看
 
@@ -315,6 +315,6 @@ nohup bash other_file.sh>log_106.114.119.log 2>&1 &
 
 * analysis：数据分析目录，下面又包含聚类clustering（有graph-based & k-means）、差异分析diffexp、主成分线性降维分析pca、非线性降维tsne，因为我们自己会走Seurat流程，所以不用看
 
-* molecule_info.h5：可用于整合多样本，使用cellranger aggr函数
+* molecule_info.h5：可用于整合多样本，使用```cellranger aggr```函数
 
 * cloupe.cloupe：官方可视化工具Loupe Cell Browser 输入文件，无代码分析的情况下使用，会代码的同学通常用不到
