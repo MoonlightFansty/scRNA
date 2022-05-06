@@ -65,7 +65,7 @@ Metadata是表型数据，Accession List提供了SRA ID \
 cd GEO/GSE119788/sra
 
 # Accession List
-cat >GSE117988
+cat >GSE111988
 SRR7722937
 SRR7722938
 SRR7722939
