@@ -62,10 +62,10 @@ mkdir sra fastq cellranger
 Metadata是表型数据，Accession List提供了SRA ID \
 ![GSE117988-SRA](README-Figures/GSE117988-SRA.png)
 ```
-cd GEO/GSE119788/sra
+cd GEO/GSE117988/sra
 
 # Accession List
-cat >GSE111988
+cat >GSE117988
 SRR7722937
 SRR7722938
 SRR7722939
@@ -182,7 +182,7 @@ tar -zcvf Output.tar.gz SRR7722937 SRR7722938 SRR7722939 SRR7722940 SRR7722941 S
 **(1)下载bam数据：** \
 示例数据来自：https://www.ebi.ac.uk/ena/browser/view/PRJNA727404?show=reads
 ```
-cd ~/Projects_gao/newhbvhc
+cd GEO/GSE
 
 # 构建下载list
 cat >download_file
