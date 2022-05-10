@@ -18,11 +18,11 @@ pbmc
 #   counts, # 未标准化的数据，如原始计数或TPMs
 #   project = "CreateSeuratObject", # 设置Seurat对象的项目名称
 #   assay = "RNA", # 与初始输入数据对应的分析名称
-#   names.field = 1, # 对于每个cell的初始标识类，从cell的名称中选择此字段。例如，如果cell在输入矩阵中被命名为BARCODE_CLUSTER_CELLTYPE，则设置名称。字段设置为3以将初始标识设置为CELLTYPE。
-#   names.delim = "_", # 对于每个cell的初始标识类，从cell的列名中选择此分隔符。例如，如果cell命名为bar - cluster - celltype，则将此设置为“-”，以便将cell名称分离到其组成部分中，以选择相关字段。
-#   meta.data = NULL, # 要添加到Seurat对象的其他单元级元数据。应该是data.frame，其中行是单元格名称，列是附加的元数据字段。
+#   names.field = 1, # 对于每个cell的初始标识类，从cell的名称中选择此字段。例如，如果cell在输入矩阵中被命名为BARCODE_CLUSTER_CELLTYPE，则设置名称。字段设置为3以将初始标识设置为CELLTYPE
+#   names.delim = "_", # 对于每个cell的初始标识类，从cell的列名中选择此分隔符。例如，如果cell命名为bar - cluster - celltype，则将此设置为“-”，以便将cell名称分离到其组成部分中，以选择相关字段
+#   meta.data = NULL, # 要添加到Seurat对象的其他单元级元数据。应该是data.frame，其中行是单元格名称，列是附加的元数据字段
 #   ...
-#   min.cells # 包含至少在这些细胞检测到的features。
+#   min.cells # 包含至少在这些细胞检测到的features
 #   min.features # 包含至少检测到这些features的细胞
 # )
 
@@ -38,12 +38,12 @@ head(pbmc@meta.data, 5)
 # 使用小提琴图可视化QC指标
 VlnPlot(pbmc, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
 
-# FeatureScatter通常用于可视化 feature-feature 相关性，
+# FeatureScatter通常用于可视化 feature-feature 相关性
 # nCount_RNA 与percent.mt的相关性
 plot1 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "percent.mt")
 # nCount_RNA与nFeature_RNA的相关性
 plot2 <- FeatureScatter(pbmc, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
-plot1 + plot2 #合并两图
+plot1 + plot2 # 合并两图
 
 pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
 # 选取 2500 > nFeature_RNA >200 和percent.mt < 5的数据
@@ -89,7 +89,7 @@ ElbowPlot(pbmc)
 # 细胞聚类
 pbmc <- FindNeighbors(pbmc, dims = 1:10)
 pbmc <- FindClusters(pbmc, resolution = 0.5)
-# dims = 1:10 即选取前10个主成分来分类细胞。
+# dims = 1:10 即选取前10个主成分来分类细胞
 # 查看前5个细胞的分类ID
 head(Idents(pbmc), 5)
 
