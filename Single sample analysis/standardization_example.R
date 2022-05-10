@@ -138,6 +138,3 @@ pbmc <- RenameIdents(pbmc, new.cluster.ids)
 DimPlot(pbmc, reduction = "umap", label = TRUE, pt.size = 0.5) + NoLegend()
 
 # saveRDS(pbmc, file = "../output/pbmc3k_final.rds")
-
-
-因。
