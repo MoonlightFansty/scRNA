@@ -13,21 +13,12 @@ mamba install -y -c bioconda aspera-cli bwa samtools bedtools sambamba sra-tools
 >如果下载失败或下载速度过慢，可以在windows环境下载，在上传至服务器
 ```
 # cellranger软件 7.0.0
-wget -O cellranger-6.1.2.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-6.1.2.tar.gz?Expires=1651612516&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci02LjEuMi50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NTE2MTI1MTZ9fX1dfQ__&Signature=mveKaux6HIjgV5uTm~0D7stn-fy-akGwbRr3ENUe24VM6WMy5JAZ7uoBAREuoG9XpQu4aUsFrGpXZ07o9Q5NvWzRGItyE2j2LGKwNZ-Lw9shhrJufpqg0QqGqftDvXmvSma2vu7hSGt43YIDfW-Yq6qK3G4u-f~XmpKfU77dkFiSEDpmHLKRTkZNF4xCffKvAV7WcKoaAhrd2z0hgB4SPLgcOfs1yu-7u84NsD7Epgb8NUlTdHgQIH1huHw5RMgUdZ6eoWhMMlMN0RDbizYWnEm1OU31uxheiGAxz0~~QxbP4rgkeD~1yQ0kqCLsqMagYwuUryR8~ptG1pXmNt1log__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA"
+wget -O cellranger-7.0.0.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-7.0.0.tar.gz?Expires=1656706802&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci03LjAuMC50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NTY3MDY4MDJ9fX1dfQ__&Signature=CbGIIFt1SKCrEmusxc55I6a6-F8QuTfSaMVDeFXXy2Bf5vpQegUNMaxPEaBNWtMJg1xZbTQLTjtBzMgDhYDQMnpRddZIlIBeYHVO4BeTkkntNtJqMfP98yd3PHluJgRHe-HfeMda~ZAhal2nNwHktwyjICMGqSvvUN9Ngj27WR2-34uX6z3oZQjHukd7~KAdK2IjEoNuegyl3a35pgo-ZiXGwX4VRj-ZlWiHaDiMwPa8XU4jvioRdBf15qS5RWG1rkC2Ysei1Ux6XWpdylASmtPAivzhEgpUKykzcfu39q~9MLefLgdA1vYH8U3j4xfxS4GJ8hzBnfOxskAb9G-ypA__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA"
 
 md5sum cellranger-7.0.0.tar.gz
-# 310d4453acacf0eec52e76aded14024c cellranger-6.1.2.tar
+# 30855cb96a097c9cab6b02bdb520423f cellranger-7.0.0.tar.gz
 
 tar -xzvf cellranger-7.0.0.tar.gz
-```
-```
-# Mouse reference dataset required for Cell Ranger 小鼠参考基因组
-wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
-
-md5sum refdata-gex-mm10-2020-A.tar.gz
-# 886eeddde8731ffb58552d0bb81f533d refdata-gex-mm10-2020-A.tar.gz
-
-tar -xzvf refdata-gex-mm10-2020-A.tar.gz
 ```
 ```
 # Human reference (GRCh38) dataset required for Cell Ranger 人类参考基因组
@@ -37,6 +28,15 @@ md5sum refdata-gex-GRCh38-2020-A.tar.gz
 # dfd654de39bff23917471e7fcc7a00cd refdata-gex-GRCh38-2020-A.tar.gz
 
 tar -xzvf refdata-gex-GRCh38-2020-A.tar.gz
+```
+```
+# Mouse reference dataset required for Cell Ranger 小鼠参考基因组
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
+
+md5sum refdata-gex-mm10-2020-A.tar.gz
+# 886eeddde8731ffb58552d0bb81f533d refdata-gex-mm10-2020-A.tar.gz
+
+tar -xzvf refdata-gex-mm10-2020-A.tar.gz
 ```
 ```
 # 配置环境变量：PATH的路径设置对应的绝对路径
