@@ -40,7 +40,8 @@ tar -xzvf refdata-gex-mm10-2020-A.tar.gz
 ```
 ```
 # 配置环境变量：PATH的路径设置对应的绝对路径
-ln -s /home/~/scRNA/cellranger-7.0.0/cellranger /home/~/miniconda3/envs/scRNA/bin
+source sourceme.bash
+# ln -s /home/~/scRNA/cellranger-7.0.0/cellranger /home/~/miniconda3/envs/scRNA/bin
 
 cellranger
 ```
