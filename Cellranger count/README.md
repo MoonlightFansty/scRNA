@@ -9,8 +9,8 @@ mamba install -y -c bioconda aspera-cli bwa samtools bedtools sambamba sra-tools
 ```
 **(2)CellRanger及参考基因组下载** \
 2022年的最新版本是cellranger软件7.0.0，hg38和mm10参考基因组 \
-这里`cellranger`的下载链接会失效，需要去官网获取：https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest
->如果下载失败或下载速度过慢，可以在windows环境下载，在上传至服务器
+这里`cellranger`的下载链接会失效，需要去官网获取：https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest \
+如果下载失败或下载速度过慢，可以在windows环境下载，在上传至服务器
 ```
 # cellranger软件 7.0.0
 wget -O cellranger-7.0.0.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-7.0.0.tar.gz?Expires=1656706802&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci03LjAuMC50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NTY3MDY4MDJ9fX1dfQ__&Signature=CbGIIFt1SKCrEmusxc55I6a6-F8QuTfSaMVDeFXXy2Bf5vpQegUNMaxPEaBNWtMJg1xZbTQLTjtBzMgDhYDQMnpRddZIlIBeYHVO4BeTkkntNtJqMfP98yd3PHluJgRHe-HfeMda~ZAhal2nNwHktwyjICMGqSvvUN9Ngj27WR2-34uX6z3oZQjHukd7~KAdK2IjEoNuegyl3a35pgo-ZiXGwX4VRj-ZlWiHaDiMwPa8XU4jvioRdBf15qS5RWG1rkC2Ysei1Ux6XWpdylASmtPAivzhEgpUKykzcfu39q~9MLefLgdA1vYH8U3j4xfxS4GJ8hzBnfOxskAb9G-ypA__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA"
