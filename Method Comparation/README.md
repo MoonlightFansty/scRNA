@@ -10,6 +10,6 @@
 接着，我们比较了多种批次整合方法并评估了它们带来的影响。经典的数据整合方法包括CCA，MNN、Scanorama、scGen、LIGER、BBKNN和Harmony等。这里我们参考了2021年的一篇单细胞批次处理的基准测评综述。从图中可知，在标准化方法中SCTransform性能较好，这与我们验证的结果相同，同时在整合方法中harmony性能占优。 \
 ![](https://github.com/MoonlightFansty/scRNA/blob/main/Method%20Comparation/Figures/2-1.png)
 由于新方法的出现，我们使用了LISI评分，比较harmony与其他几种方法整合效果。发现在现有工具中harmony的整合性能依然优越，并且运行速度很快。 \
-![](https://github.com/MoonlightFansty/scRNA/blob/main/Method%20Comparation/Figures/2-2.png)
+![](https://github.com/MoonlightFansty/scRNA/blob/main/Method%20Comparation/Figures/2-2.png) \
 最后，对harmony算法的应用进行评估，观察其整合效果，并考量生物学意义是否丢失。首先，部分样品的单细胞转录组数据整合后，如果不使用harmony等算法去除样品差异，默认的降维聚类分群。图A，我们对细胞类型进行注释，并绘制UMAP图。在运行harmony后进行聚类，同样进行UMAP展示，如图B所示。我们发现因为harmony算法，上皮细胞被打散到了其它免疫细胞里面，说明出现了过度校正，导致生物学差异丢失。 \
 ![](https://github.com/MoonlightFansty/scRNA/blob/main/Method%20Comparation/Figures/2-3.png)
