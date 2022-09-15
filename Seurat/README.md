@@ -21,5 +21,5 @@
 ![2-1](https://github.com/MoonlightFansty/scRNA/blob/main/Seurat/Figures/2-1.png) \
 通过标记基因和基因特征鉴定了内皮和淋巴内皮细胞，成纤维细胞，肌成纤维细胞和平滑肌细胞以及间皮细胞的不同簇。 \
 ![2-2](https://github.com/MoonlightFansty/scRNA/blob/main/Seurat/Figures/2-2.png) \
-最后，我们根据典型的标记基因和基因特征鉴定了组织驻留和单核细胞来源的巨噬细胞，单核细胞，髓细胞和浆细胞样树突状细胞，肥大细胞以及T，NK，B和浆细胞的不同簇。
+最后，我们根据典型的标记基因和基因特征鉴定了组织驻留和单核细胞来源的巨噬细胞，单核细胞，髓细胞和浆细胞样树突状细胞，肥大细胞以及T，NK，B和浆细胞的不同簇。 \
 ![2-3](https://github.com/MoonlightFansty/scRNA/blob/main/Seurat/Figures/2-3.png)
