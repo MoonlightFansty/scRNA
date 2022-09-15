@@ -45,7 +45,7 @@ source sourceme.bash
 
 cellranger
 ```
-![CellRanger](README-Figures/scRNA-CellRanger.png)
+![CellRanger](https://github.com/MoonlightFansty/scRNA/blob/main/Cellranger%20count/Figures/Cellranger-results.png)
 
 ## 二、单细胞SRR文件上游分析
 创建分析环境的文件夹：
@@ -56,7 +56,7 @@ mkdir sra fastq cellranger
 **(1)数据下载** \
 示例数据GSE117988:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117988 \
 Metadata是表型数据，Accession List提供了SRA ID \
-![GSE117988-SRA](README-Figures/GSE117988-SRA.png)
+![GSE117988-SRA](https://github.com/MoonlightFansty/scRNA/blob/main/Cellranger%20count/Figures/GSE117988-SRA.png)
 ```
 cd GEO/GSE117988/sra
 
@@ -101,7 +101,7 @@ bash fastq.sh
 # 查看文件
 ls -lh
 ```
-![GSE117988-Fastq](README-Figures/GSE117988-Fastq.png)
+![GSE117988-Fastq](https://github.com/MoonlightFansty/scRNA/blob/main/Cellranger%20count/Figures/GSE117988-Fastq.png)
 ```
 # 压缩文件
 ls SRR*fastq | while read id; do (nohup gzip $id &); done
@@ -293,7 +293,7 @@ nohup bash other_file.sh>log_106.114.119.log 2>&1 &
 
 ## 四、Cellranger 结果
 **一个样本产生的结果：** \
-![Results](README-Figures/Cellranger-results.png) \
+![Results](https://github.com/MoonlightFansty/scRNA/blob/main/Cellranger%20count/Figures/Cellranger-results.png) \
 **最重要的结果在```outs/```文件夹下：** \
 ![outs]() \
 **结果解读：**
