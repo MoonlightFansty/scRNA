@@ -16,3 +16,23 @@ genes_to_check =  c("SPRR3","GDPD3","SPRR1A","SPRR2A","RARRES2","TMPRSS11E",
                     "MYCL","FOXN4","CCNO",
                     "PIGR","BP1","MUC5A","VMO1","SCGB3A1","CYP2A13","CYP2B6","SCGB1A1",
                     "BCAM","KRT1","RT5","P63")
+
+mainmarkers <- c('AGER', 'CLIC5', 'PDPN', # AT1
+                 'LPCAT1', 'NAPSA', 'PGC', 'SFTPA1', 'SFTPA2', 'SFTPB', 'SFTPC', 'SLC34A2', # AT2
+                 'KRT17', 'KRT5', 'KRT6A', # Basal
+                 'AKAP14', 'ALDH3B1', 'ANKRD66', 'C11orf88', 'C11orf97', 'DNAI1', # Cilia
+                 'PIGR', 'SCGB1A1', 'SCGB3A1', # Club
+                 'CDH5', 'CLDN5', 'RAMP2', # EC
+                 'C1R', 'COL1A2', 'DCN', # Fib
+                 'AZGP1', 'CPE', 'TUBB2B', # NE
+                 # immune
+                 'CD19', 'CD79A', 'MS4A1', # B
+                 'CD2', 'CD3D', 'CD3E', 'CD3G', 'CD4', 'TRAC', # CD4
+                 'CD8A', 'CD8B', 'GZMK', # CD8
+                 'C1orf54', 'LGALS2', # DC
+                 'CD300E', 'CXCL8', 'EREG', 'S100A12', # Gran
+                 'KIT', 'MS4A2', 'PTGS1', 'RGS13', # Mast
+                 'CD68', 'FCGR1A', 'ITGAX', # M$
+                 'GNLY', 'NKG7', # NK
+                 'FOXP3', 'IL2RA', 'TNFRSF4' # Tregs
+                 )
