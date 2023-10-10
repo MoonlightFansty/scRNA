@@ -83,7 +83,7 @@ cd ../fastq
 
 # while 循环
 cat >fastq.sh
-ls ../sra/SRR* | while read id; do (nohup fasterq-dump -O ./ --split-files -e 40 $id  --include-technical &); done
+ls ../sra/SRR* | while read id; do (nohup fasterq-dump -O ./ --split-files -e 12 $id  --include-technical &); done
 
 bash fastq.sh
 ```
@@ -92,7 +92,7 @@ bash fastq.sh
 for i in `ls ../sra/SRR*`
 do
 i=$i
-echo "nohup fasterq-dump -O ./ --split-files -e 40 $i --include-technical &"
+echo "nohup fasterq-dump -O ./ --split-files -e 12 $i --include-technical &"
 done >fastq.sh
 
 bash fastq.sh
